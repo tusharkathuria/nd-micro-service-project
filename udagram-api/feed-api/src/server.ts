@@ -29,10 +29,14 @@ import {V0_FEED_MODELS} from './controllers/v0/model.index';
   }));
 
   // To be used in production
-  // app.use('/v0/', IndexRouter);
+  app.use('/v0/', IndexRouter);
+
+  app.get("/health", (req, res, next) => {
+    res.status(200).send("Hello!");
+  });
 
   // Uncomment to test locally
-  app.use('/api/v0/feed', IndexRouter);
+  // app.use('/api/v0/feed', IndexRouter);
 
   // Root URI call
   app.get( '/', async ( req, res ) => {

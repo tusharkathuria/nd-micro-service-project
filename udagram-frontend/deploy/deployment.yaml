@@ -19,5 +19,3 @@ spec:
         image: tusharkathuria/udagram-frontend
         ports:
         - containerPort: 8080
-          initialDelaySeconds: 3
-          periodSeconds: 3

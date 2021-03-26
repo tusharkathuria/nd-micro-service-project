@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: feed-api
+  labels:
+    app: feed-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: feed-api
+  template:
+    metadata:
+      labels:
+        app: feed-api
+    spec:
+      containers:
+      - name: feed-api
+        image: tusharkathuria/feed-api
+        ports:
+        - containerPort: 8080
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 8080
+          initialDelaySeconds: 3
+          periodSeconds: 3
