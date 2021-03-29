@@ -14,7 +14,7 @@ spec:
     spec: 
       containers: 
       - name: udagram-frontend 
-        image: tusharkathuria/udagram-frontend
+        image: tusharkathuria/udagram-frontend-nginx
         resources:
           requests:
             memory: "64Mi"
