@@ -15,6 +15,7 @@ spec:
       containers: 
       - name: udagram-frontend 
         image: tusharkathuria/udagram-frontend-nginx
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "64Mi"
