@@ -28,14 +28,14 @@ import {V0_USER_MODELS} from './controllers/v0/model.index';
     origin: config.url,
   }));
 
-  // To be used in production
+  // Use this when server is behind proxy
   app.use('/v0/', IndexRouter);
 
   app.get("/health", (req, res, next) => {
     res.status(200).send("Hello!");
   });
 
-  // Uncomment to test locally
+  // Use this when server is not behind proxy
   // app.use('/api/v0/users', IndexRouter);
 
   // Root URI call
