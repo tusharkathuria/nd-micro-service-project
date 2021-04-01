@@ -8,7 +8,7 @@ import * as jwt from 'jsonwebtoken';
 import {NextFunction} from 'connect';
 
 import * as EmailValidator from 'email-validator';
-import {config} from 'bluebird';
+import {uuid} from 'uuidv4'
 
 const router: Router = Router();
 
@@ -56,6 +56,10 @@ router.post('/login', async (req: Request, res: Response) => {
   const email = req.body.email;
   const password = req.body.password;
 
+  const pid = uuid()
+
+  console.log(new Date().toLocaleString() + `${pid} - Started login for email: ${email}`)
+
   if (!email || !EmailValidator.validate(email)) {
     return res.status(400).send({auth: false, message: 'Email is required or malformed.'});
   }
@@ -77,12 +81,18 @@ router.post('/login', async (req: Request, res: Response) => {
 
   const jwt = generateJWT(user);
   res.status(200).send({auth: true, token: jwt, user: user.short()});
+
+  console.log(new Date().toLocaleString() + `${pid} - Finished login for email: ${email}`)
 });
 
 
 router.post('/', async (req: Request, res: Response) => {
   const email = req.body.email;
   const plainTextPassword = req.body.password;
+
+  const pid = uuid()
+
+  console.log(new Date().toLocaleString() + `${pid} - Started registed for email: ${email}`)
 
   if (!email || !EmailValidator.validate(email)) {
     return res.status(400).send({auth: false, message: 'Email is missing or malformed.'});
@@ -109,6 +119,8 @@ router.post('/', async (req: Request, res: Response) => {
 
   const jwt = generateJWT(savedUser);
   res.status(201).send({token: jwt, user: savedUser.short()});
+
+  console.log(new Date().toLocaleString() + `${pid} - Finished registed for email: ${email}`)
 });
 
 router.get('/', async (req: Request, res: Response) => {
