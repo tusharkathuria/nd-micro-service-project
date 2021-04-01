@@ -15,12 +15,15 @@ script:
   - docker build -t udagram-feed-api udagram-api/feed-api 
   - docker build -t udagram-users-api udagram-api/users-api
   - docker build -t udagram-frontend-nginx udagram-frontend
+  - docker build -t udagram-reverse-proxy udagram-api/reverse-proxy
   - docker tag udagram-feed-api tusharkathuria/udagram-feed-api:latest
   - docker tag udagram-users-api tusharkathuria/udagram-users-api:latest
   - docker tag udagram-frontend-nginx tusharkathuria/udagram-frontend-nginx:latest
+  - docker tag udagram-reverse-proxy tusharkathuria/udagram-reverse-proxy:latest
 
 after-success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push tusharkathuria/udagram-feed-api
   - docker push tusharkathuria/udagram-users-api
   - docker push tusharkathuria/udagram-frontend-nginx
+  - docker push tusharkathuria/udagram-reverse-proxy
