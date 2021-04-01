@@ -1,4 +1,4 @@
-App can be accessed at: http://a371d03b4ee364a598386a2b0c53b255-558992557.ap-south-1.elb.amazonaws.com:8100
+App can be accessed at: http://a1a19b8ab7bc645b892a83e61877354c-2107022859.ap-south-1.elb.amazonaws.com:8100
 
 Link to repo: https://github.com/tusharkathuria/nd-micro-service-project
 
